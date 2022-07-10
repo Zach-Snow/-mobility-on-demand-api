@@ -21,7 +21,7 @@ dict_ = {
         "engine": "engine model for Audi Q3 1.4",
         "info_sys": "infotainment system for Audi Q3 1.4",
         "interior_design": "4 seater SUV",
-        "stopping_locations": [{"stop_id_1", "stop_id_2", "stop_id_3"}],
+        "stopping_locations": ["stop_id_1", "stop_id_2", "stop_id_3"],
         "current_location": "stop_id_1",
         "next_location": "stop_id_2",
         "status": "active"
