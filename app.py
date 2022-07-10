@@ -5,7 +5,6 @@ from flask_restful import Api
 from root import Root
 from cars import cars
 from car_data import cars_data
-from delete_car import delete_car
 from users_list import users_list
 from delete_user import delete_user
 
@@ -16,12 +15,10 @@ api = Api(app)
 api.add_resource(Root, "/")
 # Route to list all cars
 api.add_resource(cars, "/allcars")
-# Route to update car detail using car id
+# Route to update/delete/add car detail using car id or get data for specific car
 api.add_resource(cars_data, "/car/<carId>",
                             "/car")
-# api.add_resource(update_cars, "/update/<carId>/<key>/<value>")
-# Route to delete car detail using car id
-api.add_resource(delete_car, "/deleteCar/<carId>")
+
 # Route to list all users
 api.add_resource(users_list, "/allUsers")
 # Route to delete/deactivate user detail using user id
