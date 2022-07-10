@@ -6,6 +6,7 @@ from mock_cars_data import cars_in_system
 from typing import Dict
 
 car_update_args = reqparse.RequestParser()
+car_put_args = reqparse.RequestParser()
 
 # All the arguments that can be updated
 car_update_args.add_argument("model", type=str, default='')
@@ -18,11 +19,22 @@ car_update_args.add_argument("next_location", type=str, default='')
 car_update_args.add_argument("status", type=str, default='')
 
 
+# All the arguments are needed to input
+car_put_args.add_argument("model", type=str, required=True)
+car_put_args.add_argument("engine", type=str, required=True)
+car_put_args.add_argument("info_sys", type=str, required=True)
+car_put_args.add_argument("interior_design", type=str, required=True)
+car_put_args.add_argument("stopping_locations", type=list, required=True)
+car_put_args.add_argument("current_location", type=str, required=True)
+car_put_args.add_argument("next_location", type=str, required=True)
+car_put_args.add_argument("status", type=str, required=True)
+
+
 #  TODO: Remember we only will need a resource fields dictionary when we want to use a database
 
 
 class cars_data(Resource):
-    # return the list of all cars in system
+    # return the list of detail for the id of the car inserted
     # TODO: remember, we need marshall_with only when we are using a db object for all the methods
     def get(self, carId: str = None) -> Dict:
         if not carId:
@@ -35,6 +47,24 @@ class cars_data(Resource):
                 return {"Message": "The car id does not exist!",
                         "Error": 404}
             return result
+
+    def put(self, carId: str = None) -> Dict:
+        try:
+            args = car_put_args.parse_args()
+            pprint(args)
+            result = cars_in_system[carId]
+            print(result)
+            if not result:
+                # database code to entry the new data
+                return_dictionary = {"Message": "Data has been entered",
+                                     "Data": args}
+                pprint(return_dictionary)
+                return return_dictionary
+            else:
+                return {"Message": "The car id already exists!",
+                        "Error": 409}
+        except KeyError:
+            pass
 
     # Method to update a key data for a car
     def patch(self, carId: str = None) -> Dict:
