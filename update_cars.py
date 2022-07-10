@@ -5,7 +5,7 @@ from typing import Dict
 
 class update_cars(Resource):
     # update a car in system
-    def get(self, carId: str, key: str, value: str) -> Dict:
+    def patch(self, carId: str, key: str, value: str) -> Dict:
         for car in cars_in_system:
             print(cars_in_system[car])
             if carId in cars_in_system.keys():

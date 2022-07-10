@@ -3,8 +3,8 @@ import json
 from flask import Flask
 from flask_restful import Api
 from root import Root
-from cars import cars_list
-from update_cars import update_cars
+from cars import cars
+from car_data import cars_data
 from delete_car import delete_car
 from users_list import users_list
 from delete_user import delete_user
@@ -15,9 +15,11 @@ api = Api(app)
 # Root path
 api.add_resource(Root, "/")
 # Route to list all cars
-api.add_resource(cars_list, "/allCars")
+api.add_resource(cars, "/allcars")
 # Route to update car detail using car id
-api.add_resource(update_cars, "/update/<carId>/<key>/<value>")
+api.add_resource(cars_data, "/car/<carId>",
+                            "/car")
+# api.add_resource(update_cars, "/update/<carId>/<key>/<value>")
 # Route to delete car detail using car id
 api.add_resource(delete_car, "/deleteCar/<carId>")
 # Route to list all users

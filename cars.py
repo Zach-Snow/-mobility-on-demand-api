@@ -1,9 +1,10 @@
-from flask_restful import Resource
+from flask_restful import Resource, reqparse, fields, marshal_with
 from mock_cars_data import cars_in_system
 from typing import Dict
 
 
-class cars_list(Resource):
+class cars(Resource):
     # return the list of all cars in system
     def get(self) -> Dict:
-        return cars_in_system
+        result = cars_in_system
+        return result
