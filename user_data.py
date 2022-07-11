@@ -78,6 +78,8 @@ class user_data(Resource):
                            "arguments": args,
                            "after_action": ""}
 
+            # TODO: Remember, this could be handled with a for loop,
+            #  but for now as a prototype, its been handled like this
             if args['name']:
                 result["name"] = args['name']
             if args['gender']:

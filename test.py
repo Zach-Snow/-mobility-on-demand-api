@@ -3,7 +3,7 @@ from pprint import pprint
 import requests
 
 # TODO: Remember, this base path has to be changed based on which local ip the app uses at that time
-base = "http://172.27.21.180:5001/"
+base = "http://localhost:5001/"
 
 # test for getting all the cars details
 # response = requests.get(base+"allcars")

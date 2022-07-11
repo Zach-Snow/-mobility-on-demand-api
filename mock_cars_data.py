@@ -7,6 +7,8 @@ cars_in_system = {
         "info_sys": "infotainment system for Audi Q3 1.4",
         "interior_design": "4 seater SUV",
         # In this part of the dictionary the idea is to have all the pick up/drop off locations marked as different id numbers and in a list
+        # TODO: Remember this will be a bit error prone as we are not using a db at this moment,
+        #  But as we will use db engine, this list will be as shown here.
         "stopping_locations": ["stop_id_1", "stop_id_2", "stop_id_3"],
         "current_location": "stop_id_1",
         "next_location": "stop_id_2",

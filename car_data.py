@@ -75,6 +75,9 @@ class cars_data(Resource):
                            "after_action": ""}
 
             result = cars_in_system[carId]
+
+            # TODO: Remember, this could be handled with a for loop,
+            #  but for now as a prototype, its been handled like this
             if args['model']:
                 result["model"] = args['model']
             if args['engine']:
