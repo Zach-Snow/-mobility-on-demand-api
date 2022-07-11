@@ -23,7 +23,7 @@ update_dictionary = {
         "engine": "",
         "info_sys": "",
         "interior_design": "",
-        "stopping_locations": "" ,
+        "stopping_locations": "",
         "current_location": "",
         "next_location": "",
         "status": ""
