@@ -50,21 +50,20 @@ class cars_data(Resource):
 
     def put(self, carId: str = None) -> Dict:
         try:
+            # This block checks to find if the id already exists in the database,
+            # in my case the dictionary from mock data
             args = car_put_args.parse_args()
-            pprint(args)
+            # This is where the query into database happens
             result = cars_in_system[carId]
-            print(result)
-            if not result:
-                # database code to entry the new data
-                return_dictionary = {"Message": "Data has been entered",
-                                     "Data": args}
-                pprint(return_dictionary)
-                return return_dictionary
-            else:
+            if result:
                 return {"Message": "The car id already exists!",
                         "Error": 409}
         except KeyError:
-            pass
+            # This error only will happen when the id is an unique one
+            # database code to entry the new data
+            return_dictionary = {"Message": "Data has been entered",
+                                 "Data": args}
+            return return_dictionary
 
     # Method to update a key data for a car
     def patch(self, carId: str = None) -> Dict:
@@ -72,12 +71,11 @@ class cars_data(Resource):
             args = car_update_args.parse_args()
 
             return_dict = {"Action": "Updated",
-                           "arguments": list(args.keys()),
+                           "arguments": args,
                            "after_action": ""}
 
             result = cars_in_system[carId]
             if args['model']:
-                print("yes")
                 result["model"] = args['model']
             if args['engine']:
                 result["engine"] = args['engine']
